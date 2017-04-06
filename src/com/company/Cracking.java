@@ -30,4 +30,18 @@ public class Cracking {
         }
        return true;
     }
+
+    public String reverseNullTerminatedString(String s){
+        /*if(s==null)
+            return;
+        char[] temp=s.toCharArray();
+        String rev="";
+        for(int i=s.length()-1;i>=0;i--)
+            rev+=temp[i];
+        System.out.print("reverse "+ rev);*/
+        if(s.length()<=1)
+            return s;
+        return reverseNullTerminatedString(s.substring(1))+s.charAt(0);
+
+    }
 }
