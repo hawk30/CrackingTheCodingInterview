@@ -106,4 +106,28 @@ public class Cracking {
         return String.valueOf(charArray);
     }
 
+    String implementingGoogleSearch(String s){
+        if(s==null)
+            return s;
+        int spaceCount=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==' ')
+                spaceCount++;
+       }
+       int newLength=s.length()+2*spaceCount;
+        char[] newStr=new char[newLength];
+        for(int i=s.length()-1;i>=0;i--){
+            if(s.charAt(i)==' '){
+                newStr[newLength-1]='0';
+                newStr[newLength-2]='2';
+                newStr[newLength-3]='%';
+                newLength-=3;
+            }else{
+                newStr[newLength-1]=s.charAt(i);
+                newLength-=1;
+                }
+        }
+        return String.valueOf(newStr);
+    }
+
 }

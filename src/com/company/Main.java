@@ -8,5 +8,6 @@ public class Main {
         System.out.println(ck.reverseNullTerminatedString("gaurav is awesome"));
         System.out.print("permutation of two strings "+ ck.oneStringPermutationOther("abc", "bca"));*/
         ck.generatePermutationsOfString("abc");
+        System.out.println(" google search "+ ck.implementingGoogleSearch("i am gaurav"));
     }
 }
