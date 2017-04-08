@@ -129,5 +129,26 @@ public class Cracking {
         }
         return String.valueOf(newStr);
     }
+    void stringCompression(String s){
+        String t=s+" ";
+        if(t==null)
+            return ;
+        StringBuilder br= new StringBuilder();
+        int count=1;
+        char temp=t.charAt(0);
+        for(int i=1;i<t.length();i++){
+            if(t.charAt(i)==temp)
+                count++;
+            else{
+                br.append(""+temp+count);
+                count=1;
+                temp=t.charAt(i);
+            }
+        }
+        System.out.print(String.valueOf(br));
+
+
+
+    }
 
 }
