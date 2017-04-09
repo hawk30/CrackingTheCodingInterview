@@ -149,6 +149,7 @@ public class Cracking {
         System.out.print(String.valueOf(br));
     }
 
+
    void rotateMatrixBy90antiClockWise(int[][] arr){
        System.out.println("original matrix");
         printMatrix(arr);
@@ -206,4 +207,34 @@ public class Cracking {
             }
         }
     }
+  /*  Rotate by +90:
+
+    Transpose
+    Reverse each row
+
+    Rotate by -90:
+
+    Method 1 :
+
+    Transpose
+    Reverse each column
+
+    Method 2 :
+
+    Reverse each row
+            Transpose
+
+    Rotate by +180:
+
+    Method 1: Rotate by +90 twice
+
+    Method 2: Reverse each row and then reverse each column (Transpose)
+
+    Rotate by -180:
+
+    Method 1: Rotate by -90 twice
+
+    Method 2: Reverse each column and then reverse each row
+
+    Method 3: Rotate by +180 as they are same*/
 }
