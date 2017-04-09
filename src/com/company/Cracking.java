@@ -106,49 +106,104 @@ public class Cracking {
         return String.valueOf(charArray);
     }
 
-    String implementingGoogleSearch(String s){
-        if(s==null)
+    String implementingGoogleSearch(String s) {
+        if (s == null)
             return s;
-        int spaceCount=0;
-        for(int i=0;i<s.length();i++){
-            if(s.charAt(i)==' ')
+        int spaceCount = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ')
                 spaceCount++;
-       }
-       int newLength=s.length()+2*spaceCount;
-        char[] newStr=new char[newLength];
-        for(int i=s.length()-1;i>=0;i--){
-            if(s.charAt(i)==' '){
-                newStr[newLength-1]='0';
-                newStr[newLength-2]='2';
-                newStr[newLength-3]='%';
-                newLength-=3;
-            }else{
-                newStr[newLength-1]=s.charAt(i);
-                newLength-=1;
-                }
+        }
+        int newLength = s.length() + 2 * spaceCount;
+        char[] newStr = new char[newLength];
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') {
+                newStr[newLength - 1] = '0';
+                newStr[newLength - 2] = '2';
+                newStr[newLength - 3] = '%';
+                newLength -= 3;
+            } else {
+                newStr[newLength - 1] = s.charAt(i);
+                newLength -= 1;
+            }
         }
         return String.valueOf(newStr);
     }
-    void stringCompression(String s){
-        String t=s+" ";
-        if(t==null)
-            return ;
-        StringBuilder br= new StringBuilder();
-        int count=1;
-        char temp=t.charAt(0);
-        for(int i=1;i<t.length();i++){
-            if(t.charAt(i)==temp)
+
+    void stringCompression(String s) {
+        String t = s + " ";
+        if (t == null)
+            return;
+        StringBuilder br = new StringBuilder();
+        int count = 1;
+        char temp = t.charAt(0);
+        for (int i = 1; i < t.length(); i++) {
+            if (t.charAt(i) == temp)
                 count++;
-            else{
-                br.append(""+temp+count);
-                count=1;
-                temp=t.charAt(i);
+            else {
+                br.append("" + temp + count);
+                count = 1;
+                temp = t.charAt(i);
             }
         }
         System.out.print(String.valueOf(br));
-
-
-
     }
 
+   void rotateMatrixBy90antiClockWise(int[][] arr){
+       System.out.println("original matrix");
+        printMatrix(arr);
+       System.out.println();
+       transposematrix(arr);
+       reverseColumn(arr);
+       printMatrix(arr);
+
+   }
+
+    private void reverseColumn(int[][] arr) {
+       for(int i=0;i<arr[0].length;i++){
+           for(int j=0, k=arr[0].length-1;j<k;j++,k--){
+               int temp=arr[j][i];
+               arr[j][i]=arr[k][i];
+               arr[k][i]=temp;
+           }
+       }
+    }
+
+    private void transposematrix(int[][] arr) {
+       for(int i=0;i<arr.length;i++){
+           for(int j=i+1;j<arr[0].length;j++){
+               int temp=arr[i][j];
+               arr[i][j]=arr[j][i];
+               arr[j][i]=temp;
+           }
+       }
+    }
+
+
+    private void printMatrix(int[][] arr) {
+       for(int i=0;i<arr.length;i++){
+           for(int j=0;j<arr[0].length;j++){
+               System.out.print(arr[i][j]+" ");
+           }
+           System.out.println();
+       }
+    }
+    void rotateMatrixBy90Clockwise(int[][] arr){
+        System.out.println("original matrix");
+        printMatrix(arr);
+        System.out.println();
+        transposematrix(arr);
+        reverseRow(arr);
+        printMatrix(arr);
+    }
+
+    private void reverseRow(int[][] arr) {
+        for(int i=0;i<arr.length;i++){
+            for(int j=0, k=arr.length-1;j<k;j++,k--){
+                int temp=arr[i][j];
+                arr[i][j]=arr[i][k];
+                arr[i][k]=temp;
+            }
+        }
+    }
 }
