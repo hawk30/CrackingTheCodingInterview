@@ -16,6 +16,7 @@ public class Main {
             {13, 14, 15, 16}
         };
         //ck.rotateMatrixBy90antiClockWise(arr);
-        ck.rotateMatrixBy90Clockwise(arr);
+        //ck.rotateMatrixBy90Clockwise(arr);
+        ck.rotateMatrixInPlace(arr);
     }
 }

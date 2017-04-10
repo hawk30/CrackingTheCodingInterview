@@ -198,7 +198,7 @@ public class Cracking {
         printMatrix(arr);
     }
 
-    private void reverseRow(int[][] arr) {
+     void reverseRow(int[][] arr) {
         for(int i=0;i<arr.length;i++){
             for(int j=0, k=arr.length-1;j<k;j++,k--){
                 int temp=arr[i][j];
@@ -237,4 +237,30 @@ public class Cracking {
     Method 2: Reverse each column and then reverse each row
 
     Method 3: Rotate by +180 as they are same*/
+
+  void rotateMatrixInPlace(int[][] arr){
+      printMatrix(arr);
+      int size=arr.length;
+      int layer_count=size/2;
+      for(int i=0;i<layer_count;i++){
+          int first=i;
+          int last=size-first-1;
+          for(int j=first;j<last;j++){
+              int offset=j-first;
+              int top=arr[first][j];
+              int right_side=arr[j][last];
+              int bottom=arr[last][last-offset];
+              int left_side=arr[last-offset][first];
+
+              arr[first][j]=left_side;
+              arr[j][last]=top;
+              arr[last][last-offset]=right_side;
+              arr[last-offset][first]=bottom;
+
+          }
+      }
+      System.out.println("after rotation ");
+      printMatrix(arr);
+  }
+
 }
