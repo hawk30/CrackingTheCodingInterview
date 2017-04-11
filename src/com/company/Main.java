@@ -18,6 +18,8 @@ public class Main {
         //ck.rotateMatrixBy90antiClockWise(arr);
         //ck.rotateMatrixBy90Clockwise(arr);
        // ck.rotateMatrixInPlace(arr);
-        ck.setEntirerowColumnToZero(arr);
+        //ck.setEntirerowColumnToZero(arr);
+        System.out.println(ck.isRotation("ABCD", "CAAB"));
+
     }
 }
