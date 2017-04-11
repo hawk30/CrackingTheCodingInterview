@@ -10,13 +10,14 @@ public class Main {
         //ck.generatePermutationsOfString("abc");
         //System.out.println(" google search "+ ck.implementingGoogleSearch("i am gaurav"));
        //ck.stringCompression("aaabccccddddddddac");
-        int arr[][]= { {1, 2, 3, 4},
-            {5, 6, 7, 8},
-            {9, 10, 11, 12},
+        int arr[][]= { {5, 2, 3, 4},
+            {5, 3, 7, 8},
+            {9, 10, 0, 12},
             {13, 14, 15, 16}
         };
         //ck.rotateMatrixBy90antiClockWise(arr);
         //ck.rotateMatrixBy90Clockwise(arr);
-        ck.rotateMatrixInPlace(arr);
+       // ck.rotateMatrixInPlace(arr);
+        ck.setEntirerowColumnToZero(arr);
     }
 }

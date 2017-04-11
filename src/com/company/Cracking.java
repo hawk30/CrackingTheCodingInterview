@@ -150,46 +150,47 @@ public class Cracking {
     }
 
 
-   void rotateMatrixBy90antiClockWise(int[][] arr){
-       System.out.println("original matrix");
+    void rotateMatrixBy90antiClockWise(int[][] arr) {
+        System.out.println("original matrix");
         printMatrix(arr);
-       System.out.println();
-       transposematrix(arr);
-       reverseColumn(arr);
-       printMatrix(arr);
+        System.out.println();
+        transposematrix(arr);
+        reverseColumn(arr);
+        printMatrix(arr);
 
-   }
+    }
 
     private void reverseColumn(int[][] arr) {
-       for(int i=0;i<arr[0].length;i++){
-           for(int j=0, k=arr[0].length-1;j<k;j++,k--){
-               int temp=arr[j][i];
-               arr[j][i]=arr[k][i];
-               arr[k][i]=temp;
-           }
-       }
+        for (int i = 0; i < arr[0].length; i++) {
+            for (int j = 0, k = arr[0].length - 1; j < k; j++, k--) {
+                int temp = arr[j][i];
+                arr[j][i] = arr[k][i];
+                arr[k][i] = temp;
+            }
+        }
     }
 
     private void transposematrix(int[][] arr) {
-       for(int i=0;i<arr.length;i++){
-           for(int j=i+1;j<arr[0].length;j++){
-               int temp=arr[i][j];
-               arr[i][j]=arr[j][i];
-               arr[j][i]=temp;
-           }
-       }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr[0].length; j++) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
     }
 
 
     private void printMatrix(int[][] arr) {
-       for(int i=0;i<arr.length;i++){
-           for(int j=0;j<arr[0].length;j++){
-               System.out.print(arr[i][j]+" ");
-           }
-           System.out.println();
-       }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
-    void rotateMatrixBy90Clockwise(int[][] arr){
+
+    void rotateMatrixBy90Clockwise(int[][] arr) {
         System.out.println("original matrix");
         printMatrix(arr);
         System.out.println();
@@ -198,12 +199,12 @@ public class Cracking {
         printMatrix(arr);
     }
 
-     void reverseRow(int[][] arr) {
-        for(int i=0;i<arr.length;i++){
-            for(int j=0, k=arr.length-1;j<k;j++,k--){
-                int temp=arr[i][j];
-                arr[i][j]=arr[i][k];
-                arr[i][k]=temp;
+    void reverseRow(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0, k = arr.length - 1; j < k; j++, k--) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[i][k];
+                arr[i][k] = temp;
             }
         }
     }
@@ -238,29 +239,55 @@ public class Cracking {
 
     Method 3: Rotate by +180 as they are same*/
 
-  void rotateMatrixInPlace(int[][] arr){
-      printMatrix(arr);
-      int size=arr.length;
-      int layer_count=size/2;
-      for(int i=0;i<layer_count;i++){
-          int first=i;
-          int last=size-first-1;
-          for(int j=first;j<last;j++){
-              int offset=j-first;
-              int top=arr[first][j];
-              int right_side=arr[j][last];
-              int bottom=arr[last][last-offset];
-              int left_side=arr[last-offset][first];
+    void rotateMatrixInPlace(int[][] arr) {
+        printMatrix(arr);
+        int size = arr.length;
+        int layer_count = size / 2;
+        for (int i = 0; i < layer_count; i++) {
+            int first = i;
+            int last = size - first - 1;
+            for (int j = first; j < last; j++) {
+                int offset = j - first;
+                int top = arr[first][j];
+                int right_side = arr[j][last];
+                int bottom = arr[last][last - offset];
+                int left_side = arr[last - offset][first];
 
-              arr[first][j]=left_side;
-              arr[j][last]=top;
-              arr[last][last-offset]=right_side;
-              arr[last-offset][first]=bottom;
+                arr[first][j] = left_side;
+                arr[j][last] = top;
+                arr[last][last - offset] = right_side;
+                arr[last - offset][first] = bottom;
 
-          }
-      }
-      System.out.println("after rotation ");
-      printMatrix(arr);
-  }
+            }
+        }
+        System.out.println("after rotation ");
+        printMatrix(arr);
+    }
 
+    void setEntirerowColumnToZero(int[][] arr) {
+        printMatrix(arr);
+        if (arr == null)
+            return;
+        int[] row = new int[arr.length];
+        int[] col = new int[arr[0].length];
+        for (int i = 0; i < arr.length; i++)
+            row[i] = 1;
+        for (int i = 0; i < arr[0].length; i++)
+            col[i] = 1;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if (arr[i][j] == 0) {
+                    row[i] = 0;
+                    col[j] = 0;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if (row[i] == 0 || col[j] == 0)
+                    arr[i][j] = 0;
+            }
+        }
+        printMatrix(arr);
+    }
 }
